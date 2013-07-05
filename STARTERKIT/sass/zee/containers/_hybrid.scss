@@ -1,0 +1,16 @@
+@import "variables";
+
+.container {
+	@include margin-h(auto);
+	min-width: $container-min-width;
+
+	@include for-tablet-and-up {
+		width: $container-tablet-min-width - (2 * $mobile-spacing);
+	}
+	@include for-desktop-and-up {
+		width: $container-desktop-min-width;
+	}
+	@include for-large-desktop-and-up {
+		width: $container-large-desktop-min-width;
+	}
+}

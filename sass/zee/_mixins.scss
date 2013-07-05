@@ -1,0 +1,201 @@
+@mixin style-link($selector: "a") {
+	#{$selector},
+	#{$selector}:active,
+	#{$selector}:visited,
+	#{$selector}:focus,
+	#{$selector}:hover {
+		@content;
+	}
+}
+@mixin style-this-link {
+	&, &:active, &:visited, &:focus, &:hover {
+		@content;
+	}
+}
+@mixin style-headings {
+	h1, h2, h3, h4, h5, h6 {
+		@content;
+	}
+}
+
+@mixin hidden-text {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+@mixin clearfix {
+  *zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+    line-height: 0;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin visible-for-js-only {
+	display: none;
+	.js & {
+		display: block;
+	}
+}
+
+@mixin hidden-for-js-only {
+	.js & {
+		display: none;
+	}
+}
+
+@mixin activable {
+	display: none;
+	&.active {
+		display: block;
+	}
+	.no-js &:target {
+		display: block;
+	}
+}
+
+@mixin activable-for-js-only {
+	.js & {
+		display: none;
+		&.active {
+			display: block;
+		}
+	}
+}
+
+
+
+// FROM BOOTSTRAP
+// IE7 inline-block
+// ----------------
+@mixin ie7-inline-block() {
+  *display: inline; /* IE7 inline-block hack */
+  *zoom: 1;
+}
+
+// FROM BOOTSTRAP
+// IE7 likes to collapse whitespace on either side of the inline-block elements.
+// Ems because we're attempting to match the width of a space character. Left
+// version is for form buttons, which typically come after other elements, and
+// right version is for icons, which come before. Applying both is ok, but it will
+// mean that space between those elements will be .6em (~2 space characters) in IE7,
+// instead of the 1 space in other browsers.
+@mixin ie7-restore-left-whitespace() {
+  *margin-left: .3em;
+
+  &:first-child {
+    *margin-left: 0;
+  }
+}
+
+// FROM BOOTSTRAP
+// Webkit-style focus
+// ------------------
+@mixin tab-focus() {
+  // Default
+  outline: thin dotted #333;
+  // Webkit
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+
+// https://github.com/AdamBrodzinski/Retina-Sprites-for-Compass
+@mixin zee-sprite-bg($name, $sprite, $sprite2x: false) {
+	background-image: sprite-url($sprite);
+	background-position: sprite-position($sprite, $name);
+	background-repeat: no-repeat;
+	width: image-width(sprite-file($sprite, $name));
+	height: image-height(sprite-file($sprite, $name));
+
+	@if $sprite2x {
+		@include for-hidpi {
+			background-image: sprite-url($sprite2x);
+			$pos: sprite-position($sprite2x, $name);
+			background-position: nth($pos, 1) nth($pos, 2) / 2;
+			
+			// @include background-size(image-width(sprite-file($sprite, $name)) image-height(sprite-file($sprite, $name)));
+			@include background-size(ceil(image-width(sprite-path($sprite2x)) / 2) auto);
+		}
+	}
+}
+
+@mixin zee-sprite-gc-bg($name, $sprite-path, $sprite, $sprite2x: false) {
+	position: relative;
+
+	.generatedcontent &:after {
+		position: absolute;
+		content: "";
+		@include sprite-bg($name, $sprite, $sprite2x);
+	}
+	.no-generatedcontent & {
+		background-image: url("../img/#{$sprite-path}#{$name}.png");
+		background-position: right center;
+		background-repeat: no-repeat;
+	}
+}
+
+@mixin zee-bg($name, $folder, $sizing: true, $datauri: true) {
+	$img1x: $folder + "-lodpi/" + $name;
+	$img2x: $folder + "-hidpi/" + $name;
+
+	@if $datauri {
+		.datauri & {
+			background-image: inline-image($img1x);		
+		}
+		.no-datauri & {
+			background-image: image-url($img1x);			
+		}
+	} @else {
+		background-image: image-url($img1x);	
+	}
+	
+	background-repeat: no-repeat;
+
+	@if $sizing {
+		width: image-width($img1x);
+		height: image-height($img1x);
+	}
+
+	@if $img2x {
+		@include for-hidpi {
+			@if $datauri {
+				.datauri & {
+					background-image: inline-image($img2x);		
+				}
+				.no-datauri & {
+					background-image: image-url($img2x);			
+				}
+			} @else {
+				background-image: image-url($img2x);	
+			}
+			@include background-size(ceil(image-width($img2x) / 2) auto);
+		}
+	}
+}
+
+@mixin zee-fluid-ratio($ratio: 100%) {
+	height: 0;
+	padding-bottom: $ratio;
+	overflow: hidden;
+}
+
+@mixin outline-element($color: red) {
+	@include box-shadow($color 0 0 0 1px);
+}
+@mixin outline-children($color: red) {
+	> * { @include outline-element($color); }
+}
+@mixin outline-all($color: red) {
+	* { @include outline-element($color); }
+}
+
+@mixin pie {
+	behavior: url($pie-path);
+}

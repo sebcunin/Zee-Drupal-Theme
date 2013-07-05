@@ -1,0 +1,8 @@
+@import "zee/shortcuts", "mixins";
+
+%fit-to-mobile-width {
+	@include fit-to-mobile-width;
+}
+%unfit-to-mobile-width {
+	@include unfit-to-mobile-width;
+}

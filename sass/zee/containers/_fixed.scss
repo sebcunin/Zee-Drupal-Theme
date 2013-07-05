@@ -1,0 +1,6 @@
+@import "variables";
+
+.container {
+	@include margin-h(auto);
+	width: $container-max-width;
+}

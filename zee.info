@@ -1,0 +1,41 @@
+name = Zee
+description = Zee Base theme from Zee Agency
+screenshot  = screenshot.png
+
+version     = 0.1
+core        = 7.x
+engine      = phptemplate
+
+regions[header]         = Header
+regions[hero]           = Hero
+regions[nav]            = Navigation
+regions[help]           = Help
+regions[content_top]    = Content Top
+regions[content]        = Content
+regions[content_bottom] = Content Bottom
+regions[sidebar_first]  = First Sidebar
+regions[sidebar_second] = Second Sidebar
+regions[footer]         = Footer
+
+stylesheets[all][] = css/screen.css
+stylesheets[print][] = css/print.css
+
+scripts[] = js/libs/modernizr.min.js
+
+exclude[js][] = sites/all/modules/panels/js/panels.js
+exclude[css][] = modules/system/system.menus.css
+exclude[css][] = sites/all/modules/field_collection/field_collection.theme.css
+
+settings[toggle_name] = 0
+settings[toggle_search] = 1
+
+
+; Panels layouts. You can place multiple layouts under the "layouts" folder.
+;
+plugins[panels][layouts] = layouts
+
+
+breakpoints[mobile] = (min-width: 0px)
+breakpoints[tablet] = (min-width: 768px)
+breakpoints[desktop] = (min-width: 980px)
+breakpoints[large_desktop] = (min-width: 1200px)

@@ -1,0 +1,54 @@
+
+
+@mixin new-grid(
+	$name,	// !!! UNIQUE NAME !!!
+	$columns: 12,
+	$gutter-width: 2%,
+	$grid-width: 100%,
+	$fit: true,
+
+	$grid-name: 'grid',
+	$cell-name: 'cell',
+	$pull-name: 'pull',
+	$push-name: 'push'
+) {
+	$half-gutter: $gutter-width / 2;
+
+	%#{$name}-#{$cell-name} {
+		float: left;
+		@include margin-h($half-gutter);
+	}
+
+	%#{$name}-#{$grid-name} {
+		@include clearfix;
+
+		@if $fit {
+			@include margin-h(-$half-gutter);
+		}
+
+		@for $i from 1 through $columns {
+
+			$cell-width: grid-cell-width($i, $columns, $gutter-width, $grid-width);
+
+			%#{$name}-#{$cell-name}-#{$i} {
+				@extend %#{$name}-#{$cell-name};
+				width: $cell-width;
+			}
+			%#{$name}-#{$pull-name}-#{$i} {
+				margin-left: - $cell-width - $half-gutter;
+			}
+			%#{$name}-#{$push-name}-#{$i} {
+				margin-left: $cell-width + (3 * $half-gutter);
+			}
+		}
+	}
+}
+
+@function grid-cell-width(
+	$cell: 1,
+	$columns: 12,
+	$gutter-width: 2%,
+	$grid-width: 100%
+) {
+	@return ($grid-width / $columns * $cell) - $gutter-width;
+}

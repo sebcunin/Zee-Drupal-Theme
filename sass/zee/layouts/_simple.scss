@@ -1,0 +1,30 @@
+// |       Content Top        |
+// | Content | First | Second |
+// |      Content Bottom      |
+
+@include for-tablet-and-up {
+	@include new-grid(
+		$name: 'tablet-layout',
+		$columns: 4,
+		$fit: true
+	);
+	.l-container {
+		@extend %tablet-layout-grid;
+	}
+	.l-row {
+		@extend %tablet-layout-cell-4;
+	}
+	.l-content {
+		@extend %tablet-layout-cell-2;
+		@extend %tablet-layout-push-2;
+	}
+	.l-sidebar {
+		@extend %tablet-layout-cell-1;
+	}
+	.l-sidebar--first {
+		@extend %tablet-layout-pull-4;
+	}
+	.l-sidebar--second {
+		@extend %tablet-layout-pull-3;
+	}
+}

@@ -1,0 +1,8 @@
+@import "zee/shortcuts";
+
+@mixin fit-to-mobile-width {
+	@include padding-h($mobile-spacing);
+}
+@mixin unfit-to-mobile-width {
+	@include padding-h(-$mobile-spacing);
+}

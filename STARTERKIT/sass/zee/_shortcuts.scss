@@ -1,0 +1,35 @@
+// Adjust both top & bottom margin
+@mixin margin-v($top: 0, $bottom: false) {
+	@if($bottom == false) {
+		$bottom: $top;
+	}
+	margin-top: $top;
+	margin-bottom: $bottom;
+}
+
+// Adjust both top & bottom padding
+@mixin padding-v($top: 0, $bottom: false) {
+	@if($bottom == false) {
+		$bottom: $top;
+	}
+	padding-top: $top;
+	padding-bottom: $bottom;
+}
+
+// Adjust both left & right margin
+@mixin margin-h($left: 0, $right: false) {
+	@if($right == false) {
+		$right: $left;
+	}
+	margin-left: $left;
+	margin-right: $right;
+}
+
+// Adjust both left & right padding
+@mixin padding-h($left: 0, $right: false) {
+	@if($right == false) {
+		$right: $left;
+	}
+	padding-left: $left;
+	padding-right: $right;
+}

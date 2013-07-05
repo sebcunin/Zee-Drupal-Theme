@@ -1,0 +1,27 @@
+@import "compass/css3";
+
+// Zee
+@import "zee/all";
+
+// Zeste
+@import "zee/responsive",
+		"zee/layouts/complex";
+
+
+// Drupal
+@import "drupal/clean";
+
+// Custom
+// @import "custom/all";
+
+@import "zee/containers/fixed";
+@import "zee/layouts/simple";
+
+body {
+	background: #EEE;
+}
+.page-header,
+.page-nav,
+.layout-container {
+	background: white;
+}

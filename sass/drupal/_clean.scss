@@ -1,0 +1,11 @@
+// Hide everything distracting
+#environment-indicator,
+#toolbar,
+.messages,
+.tabs {
+	display: none;
+}
+body {
+	margin-right: 0 !important;	// For env indicator...
+	padding-top: 0 !important;	// For toolbar...
+}

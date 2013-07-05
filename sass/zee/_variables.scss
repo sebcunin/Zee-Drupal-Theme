@@ -1,0 +1,14 @@
+// Prevents tools to generate CSS
+// Only mixins/placeholders and stuff will be available
+$zee-output-style: false;
+
+// Layout
+$mobile-spacing: 20px !default;
+
+
+// Socials
+$facebook-color: #3B5998 !default;
+$twitter-color: #36baf2 !default;
+$linkedin-color: #007bb6 !default;
+$gplus-color: #ff864b !default;
+$youtube-color: #de1f00 !default;

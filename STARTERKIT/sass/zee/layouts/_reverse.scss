@@ -1,0 +1,29 @@
+// |       Content Top        |
+// | First | Second | Content |
+// |      Content Bottom      |
+
+@include for-tablet-and-up {
+	@include new-grid('layout', 12);
+	.l-container {
+		@extend %layout-grid;
+	}
+	.l-row {
+		@extend %layout-cell-12;
+	}
+	.l-content {
+		@extend %layout-cell-6;
+	}
+	.l-sidebar {
+		@extend %layout-cell-3;
+	}
+
+	.l-content {
+		@extend %layout-push-6; // to the right
+	}
+	.l-sidebar--first {
+		@extend %layout-pull-12; // cell-6 + pull-6
+	}
+	.l-sidebar--second {
+		@extend %layout-pull-9; // cell-3 + pull-6
+	}
+}
