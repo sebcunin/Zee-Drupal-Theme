@@ -54,7 +54,7 @@ function zee_preprocess_node(&$variables){
  * @param $hook
  *   The name of the template being rendered ("block" in this case.)
  */
-function zen_process_block(&$variables, $hook) {
+function zee_process_block(&$variables, $hook) {
   // Drupal 7 should use a $title variable instead of $block->subject.
   $variables['title'] = $variables['block']->subject;
 }
